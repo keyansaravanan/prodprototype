@@ -24,6 +24,7 @@ def startall():
     thread8.start()
     thread10.start()
     thread11.start()
+    time.sleep(10)
     thread7.start()
 
     
