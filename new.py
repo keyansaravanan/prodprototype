@@ -1,5 +1,3 @@
-
-   
 from threading import Thread
 import time
 from combinedone import start_recording1
