@@ -184,24 +184,28 @@ def decisionblockforcameratwo(threadname):
             config.cameratwoon=False    
         
 def start_webcam(threadname):
-
+    print("Entered camera function")
     i=0
     
     img1 = None
     img2 = None
     global db1
     global db2
-
+    print("Initiating")
     vid1=cv2.VideoCapture(0)
     vid2=cv2.VideoCapture(1)
+    print("Initiating the camera")
     while True:
+        print("In reading")
         rval1, im1 = vid1.read()
         rval2, im2 = vid2.read()
+        print("read")
         import config
         print("db1:",config.db1)
         print("db2:",config.db2)
         print("nc1:",config.nc1)
         print("nc2:",config.nc2)
+        
         if(config.cameraoneon==True and config.cameratwoon==True):
             #im1=cv2.imread('./speakerone.jpg')
             #im2=cv2.imread('./speakertwo.jpg')
