@@ -19,8 +19,11 @@ thread11 = Thread(target=decisionblockforcameratwo, args=("decisiontwo",))
 
 def startall():
     thread4.start()
+    time.sleep(10)
     thread5.start()
+    time.sleep(5)
     thread9.start()
+    time.sleep(5)
     thread8.start()
     thread10.start()
     thread11.start()
