@@ -27,7 +27,7 @@ def camPreview(previewName, camID):
     cv2.destroyWindow(previewName)
 
 # Create two threads as follows
-thread1 = camThread("Camera 1", 1)
-thread2 = camThread("Camera 2", 2)
+thread1 = camThread("Camera 1", 0)
+thread2 = camThread("Camera 2", 1)
 thread1.start()
 thread2.start()
