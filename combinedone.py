@@ -240,7 +240,7 @@ def start_webcam(threadname):
         rval2, im2 = vid2.read()
         import config
         print("db1:",config.db1)
-        print("db1:",config.db2)
+        print("db2:",config.db2)
         print("nc1:",config.nc1)
         print("nc2:",config.nc2)
         if(config.cameraoneon==True and config.cameratwoon==True):
@@ -268,7 +268,5 @@ def start_webcam(threadname):
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-
-
 
 
