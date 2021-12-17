@@ -191,51 +191,10 @@ def start_webcam(threadname):
     img2 = None
     global db1
     global db2
-    '''
-    server_socket = socket.socket()
-    server_socket.bind(('0.0.0.0', 5454))  
-    server_socket.listen(0)
-    print("Listening")
-    connection = server_socket.accept()[0].makefile('rb')
-    vid = cv2.VideoCapture(0
-    '''
+
     vid1=cv2.VideoCapture(0)
     vid2=cv2.VideoCapture(1)
     while True:
-        #image_len = struct.unpack('<L', connection.read(struct.calcsize('<L')))[0]
-
-        '''
-        image_stream = io.BytesIO()
-        image_stream.write(connection.read(image_len))
-        image_stream.seek(0)
-        image = Image.open(image_stream)
-        im1 = cv2.cvtColor(numpy.array(image), cv2.COLOR_RGB2BGR)
-        ret, im2 = vid.read()
-
-
-        image_stream2 = io.BytesIO()
-        image_stream2.write(connection.read(image_len))
-        image_stream2.seek(0)
-        image2 = Image.open(image_stream2)
-        im2 = cv2.cvtColor(numpy.array(image2), cv2.COLOR_RGB2BGR)
-        
-
-        from combineoftwo import db1
-        from combineoftwo import db2
-        print("db1:",db1)
-        print("db2:",db2)
-        image_len = struct.unpack('<L', connection.read(struct.calcsize('<L')))[0]
-        if not image_len:
-            break
-
-        image_stream = io.BytesIO()
-        image_stream.write(connection.read(image_len))
-        image_stream.seek(0)
-        image = Image.open(image_stream)
-        im1 = cv2.cvtColor(numpy.array(image), cv2.COLOR_RGB2BGR)
-        ret, im2 = vid.read()
-        '''
-
         rval1, im1 = vid1.read()
         rval2, im2 = vid2.read()
         import config
