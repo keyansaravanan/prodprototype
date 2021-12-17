@@ -20,6 +20,7 @@ thread11 = Thread(target=decisionblockforcameratwo, args=("decisiontwo",))
 
 
 def startall():
+    thread7.start()
     thread4.start()
     time.sleep(10)
     thread5.start()
@@ -30,9 +31,6 @@ def startall():
     print("Mic's all started")
     thread10.start()
     thread11.start()
-    print("Camera Started")
-    time.sleep(2)
-    thread7.start()
-
+    
     
 startall()
