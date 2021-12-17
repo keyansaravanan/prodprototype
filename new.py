@@ -27,9 +27,11 @@ def startall():
     thread9.start()
     time.sleep(5)
     thread8.start()
+    print("Mic's all started")
     thread10.start()
     thread11.start()
-    time.sleep(10)
+    print("Camera Started")
+    time.sleep(2)
     thread7.start()
 
     
