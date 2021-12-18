@@ -1,46 +1,50 @@
+from PIL import Image
+import cv2
+import numpy
+import sys
+import time
 
-import cv2 
-
-key = cv2. waitKey(1)
-webcam = cv2.VideoCapture(0)
+img1 = None
+img2 = None
+global db1
+global db2
+print("Initiating")
+vid1=cv2.VideoCapture(0)
+vid2=cv2.VideoCapture(1)
+print("Initiating the camera")
 while True:
-    try:
-        check, frame = webcam.read()
-        print(check) #prints true as long as the webcam is running
-        print(frame) #prints matrix values of each framecd 
-        cv2.imshow("Capturing", frame)
-        key = cv2.waitKey(1)
-        if key == ord('s'): 
-            cv2.imwrite(filename='saved_img.jpg', img=frame)
-            webcam.release()
-            img_new = cv2.imread('saved_img.jpg', cv2.IMREAD_GRAYSCALE)
-            img_new = cv2.imshow("Captured Image", img_new)
-            cv2.waitKey(1650)
-            cv2.destroyAllWindows()
-            print("Processing image...")
-            img_ = cv2.imread('saved_img.jpg', cv2.IMREAD_ANYCOLOR)
-            print("Converting RGB image to grayscale...")
-            gray = cv2.cvtColor(img_, cv2.COLOR_BGR2GRAY)
-            print("Converted RGB image to grayscale...")
-            print("Resizing image to 28x28 scale...")
-            img_ = cv2.resize(gray,(28,28))
-            print("Resized...")
-            img_resized = cv2.imwrite(filename='saved_img-final.jpg', img=img_)
-            print("Image saved!")
-        
-            break
-        elif key == ord('q'):
-            print("Turning off camera.")
-            webcam.release()
-            print("Camera off.")
-            print("Program ended.")
-            cv2.destroyAllWindows()
-            break
-        
-    except(KeyboardInterrupt):
-        print("Turning off camera.")
-        webcam.release()
-        print("Camera off.")
-        print("Program ended.")
-        cv2.destroyAllWindows()
+    print("In reading")
+    rval1, im1 = vid1.read()
+    rval2, im2 = vid2.read()
+    print("read")
+    import config
+    print("db1:",config.db1)
+    print("db2:",config.db2)
+    print("nc1:",config.nc1)
+    print("nc2:",config.nc2)
+
+    if(config.cameraoneon==True and config.cameratwoon==True):
+        #im1=cv2.imread('./speakerone.jpg')
+        #im2=cv2.imread('./speakertwo.jpg')
+        images_1_2_h = np.hstack((im1, im2))
+        cv2.imshow('Video',images_1_2_h)
+        #print("thisconditionworks")
+        i=0
+    if(config.cameraoneon==True and config.cameratwoon==False):
+        #im1=cv2.imread('./speakerone.jpg')
+        cv2.imshow('Video',im1)
+        #print("thisconditionworkstwo")
+        i=1
+    if(config.cameratwoon==True and config.cameraoneon==False):
+        #im2=cv2.imread('./speakertwo.jpg')
+        #print("thisconditionworksthree")
+        cv2.imshow('Video',im2)
+        i=2
+    if(config.cameraoneon==False and config.cameratwoon==False):
+        im3=cv2.imread('./noone.jpg')
+        #print("noworks")
+        cv2.imshow('Video',im3)
+        i=3
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
